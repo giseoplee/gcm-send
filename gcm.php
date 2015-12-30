@@ -1,8 +1,10 @@
 <?php
-include "./lib/cDB.class.php";
-include "./lib/cLIB.class.php";
+// include "./lib/cDB.class.php";
+// include "./lib/cLIB.class.php";
+include "./lib/header.php";
 require_once "./lib/GCMPushMessage.php";
 define("MULTICAST_COUNT", 1000);
+error_reporting (E_ALL ^ E_NOTICE);
 
 // */10 * * * * /usr/bin/php /home/cms/wwwroot/gcm/push.php
 
@@ -10,8 +12,24 @@ define("MULTICAST_COUNT", 1000);
 10분마다 실행
 */
 
-$send_key = $_POST['no'];
+$send_key = $_GET["no"];
+$send_key = $_POST["no"];
 echo $send_key;
+//echo "test";
+//echo json_encode($send_key);
+//echo $send_key;
+
+// $query = "select * from notifications";
+// $result = mysql_query($query);
+// if(!mysql_query($query)){
+//     echo "query fail";
+// }
+// while($rows = mysql_fetch_assoc($result)){
+//     print_r($rows);
+//     echo "<br />";
+// }
+
+//$temp = $cDB->Select("select * from notifications");
 
 // 즉시발송
 // $query = "select * from pushes where status_sending=10 and status=20 and sending_at<=now()";
@@ -25,8 +43,10 @@ echo $send_key;
 
 //     mysql_query("update pushes set status_sending=20 where id={$row[id]}");
 
-//     $game = $cDB->Select("select * from games where id={$row[game_id]}");
-//     $_gcm_api_key = $game['gcm_key'];
+    // $game = $cDB->Select("select * from games where id={$row[game_id]}");
+    // $_gcm_api_key = $game['gcm_key'];
+    $_gcm_api_key = "AIzaSyDa1JpGKQZYNvecZzUe3PEcZ4mQqAKzjv0";
+//     AIzaSyDa1JpGKQZYNvecZzUe3PEcZ4mQqAKzjv0
 
 //     $send_data['GcmPackageName'] = $game['package'];
 //     $send_data['GcmTitle'] = $row['subject'];

@@ -44,6 +44,9 @@ ini_set("memory_limit","-1");
 #클래스 파일 포함
 require_once _ROOT_DIR."lib/cDB.class.php";
 require_once _ROOT_DIR."lib/cLIB.class.php";
+// include_once _ROOT_DIR."cDB.class.php"
+// include_once _ROOT_DIR."cLIB.class.php";
+
 
 #모듈
 require_once _ROOT_DIR."_config.php";
