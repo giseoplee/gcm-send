@@ -17,7 +17,7 @@
 */
 class GCMPushMessage {
 	var $url = 'https://android.googleapis.com/gcm/send';
-	var $serverApiKey = "";
+	var $serverApiKey = "AIzaSyDa1JpGKQZYNvecZzUe3PEcZ4mQqAKzjv0";
 	var $devices = array();
 	
 	/*

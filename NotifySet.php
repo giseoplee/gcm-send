@@ -6,30 +6,22 @@ require_once "./lib/GCMPushMessage.php";
 define("MULTICAST_COUNT", 1000);
 error_reporting (E_ALL ^ E_NOTICE);
 
-// */10 * * * * /usr/bin/php /home/cms/wwwroot/gcm/push.php
 
-/*
-10분마다 실행
-*/
+//$send_key = $_GET['no'];
+$send_key = $_POST['no'];
+$notify_check_result = $cDB->Select("select * from notifications where id={$send_key}");
+$notify_data_result = "select count(registration_key) as count, (select id from users where application_id={$notify_check_result[application_id]} order by id desc limit 1) as id  from users where application_id={$notify_check_result[application_id]}";
+$send_data = $cDB->Select($notify_data_result);
+//print_r($send_data);
 
-$send_key = $_GET["no"];
-$send_key = $_POST["no"];
-echo $send_key;
-//echo "test";
-//echo json_encode($send_key);
-//echo $send_key;
+$result['slice'] = 50000;
+$result['count'] = $send_data['count'];
+$result['last_id'] = $send_data['id'];
+$result['devided'] = (int)($result['count']/$result['slice']);
+$result['remainder'] = $result['count']%$result['slice'];
+mysql_query("update notifications set send_count={$result[count]} where id={$send_key}");
 
-// $query = "select * from notifications";
-// $result = mysql_query($query);
-// if(!mysql_query($query)){
-//     echo "query fail";
-// }
-// while($rows = mysql_fetch_assoc($result)){
-//     print_r($rows);
-//     echo "<br />";
-// }
-
-//$temp = $cDB->Select("select * from notifications");
+echo json_encode($result);
 
 // 즉시발송
 // $query = "select * from pushes where status_sending=10 and status=20 and sending_at<=now()";
@@ -45,7 +37,7 @@ echo $send_key;
 
     // $game = $cDB->Select("select * from games where id={$row[game_id]}");
     // $_gcm_api_key = $game['gcm_key'];
-    $_gcm_api_key = "AIzaSyDa1JpGKQZYNvecZzUe3PEcZ4mQqAKzjv0";
+    //$_gcm_api_key = "AIzaSyDa1JpGKQZYNvecZzUe3PEcZ4mQqAKzjv0";
 //     AIzaSyDa1JpGKQZYNvecZzUe3PEcZ4mQqAKzjv0
 
 //     $send_data['GcmPackageName'] = $game['package'];
@@ -78,3 +70,5 @@ echo $send_key;
 
 //     mysql_query("update pushes set status_sending=30 where id={$row[id]}");
 // }
+
+?>

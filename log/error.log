@@ -19,3 +19,6 @@
 [Wed Dec 30 14:57:19 2015] [error] [client 127.0.0.1] PHP Warning:  require_once(/Users/GS/gcm-send/cDB.class.php): failed to open stream: No such file or directory in /Users/GS/gcm-send/lib/header.php on line 45
 [Wed Dec 30 14:57:19 2015] [error] [client 127.0.0.1] PHP Fatal error:  require_once(): Failed opening required '/Users/GS/gcm-send/cDB.class.php' (include_path='.:') in /Users/GS/gcm-send/lib/header.php on line 45
 [Wed Dec 30 15:00:51 2015] [error] [client 127.0.0.1] File does not exist: /Users/GS/gcm-send/favicon.ico, referer: http://local.gcm-send.com/
+[Thu Dec 31 02:35:49 2015] [error] [client 127.0.0.1] PHP Fatal error:  Call to undefined function Int() in /Users/GS/gcm-send/gcm.php on line 20
+[Thu Dec 31 10:12:01 2015] [error] [client 127.0.0.1] PHP Warning:  Missing argument 2 for cDB::Error(), called in /Users/GS/gcm-send/lib/cDB.class.php on line 134 and defined in /Users/GS/gcm-send/lib/cDB.class.php on line 86
+[Thu Dec 31 16:14:43 2015] [error] [client 127.0.0.1] PHP Catchable fatal error:  Object of class GCMPushMessage could not be converted to string in /Users/GS/gcm-send/NotifySend.php on line 63
