@@ -1,4 +1,5 @@
-<?
+<?php
+
 $_DATA_PATH = "./";
 $_DATA_PATH_AFTER = "";
 
