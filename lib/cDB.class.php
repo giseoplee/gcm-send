@@ -1,4 +1,4 @@
-<?
+<?php
 ### dbconn() : DB접속
 ### error() : 오류출력
 ### result($result) : 결과물 검사
